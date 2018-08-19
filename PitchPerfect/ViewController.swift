@@ -26,5 +26,9 @@ class ViewController: UIViewController {
         print("Clicked on button")
         recordingLabel.text = "Recording in progress.."
     }
+    @IBAction func stopRecording(_ sender: Any) {
+        print("Stop recording")
+        recordingLabel.text = "Tap to Record"
+    }
 }
 
