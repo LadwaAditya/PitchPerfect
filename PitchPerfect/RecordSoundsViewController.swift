@@ -29,6 +29,7 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
         recordingLabel.text = "Recording in progress.."
         startRecording()
     }
+    
     @IBAction func stopRecording(_ sender: Any) {
         print("Stop recording")
         stopRecordingButton.isEnabled = false
@@ -62,5 +63,13 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
         audioRecorder.delegate = self
         audioRecorder.prepareToRecord()
         audioRecorder.record()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "stopRecording" {
+            let playSoundVC = segue.destination as! PlaySoundsViewController
+            let recordedAudioURL = sender as! URL
+            playSoundVC.recordedAudioFileURL = recordedAudioURL
+        }
     }
 }
